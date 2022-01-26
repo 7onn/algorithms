@@ -1,3 +1,3 @@
-# miscellaneous
+# Algorithms
 
-A couple of algorithm solutions I've written.
+A couple of algorithm I've written for challenges.
