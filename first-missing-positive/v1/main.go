@@ -5,9 +5,9 @@ import (
 	"sort"
 )
 
-func Solution(A []int) int {
+func firstMissingPositive(nums []int) int {
 	positives := []int{}
-	for _, current := range A {
+	for _, current := range nums {
 		if current > 0 {
 			positives = append(positives, current)
 		}
@@ -46,7 +46,7 @@ func Solution(A []int) int {
 }
 
 func main() {
-	fmt.Println("Result:", Solution([]int{-1, -3}))
-	fmt.Println("Result:", Solution([]int{1, 200, 3, 5, 8, 7, 6, 4, 1, 2}))
-	fmt.Println("Result:", Solution([]int{-9, 100, 1, 3, 6, 4, 1, 2}))
+	fmt.Println("Result:", firstMissingPositive([]int{-1, -3}))
+	fmt.Println("Result:", firstMissingPositive([]int{1, 200, 3, 5, 8, 7, 6, 4, 1, 2}))
+	fmt.Println("Result:", firstMissingPositive([]int{-9, 100, 1, 3, 6, 4, 1, 2}))
 }
