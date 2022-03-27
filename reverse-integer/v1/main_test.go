@@ -15,9 +15,8 @@ func TestReverse(t *testing.T) {
 		{"Should return 321 when input is 123", 123, 321},
 		{"Should return -321 when input is -123", -123, -321},
 		{"Should return 21 when input is 120", 120, 21},
-		{
-			`Should return 0 when input is 1534236469 
-			because the opposite is bigger than a int32 can bear`, 1534236469, 0},
+		{`Should return 0 when input is 1534236469 
+			because its opposite is bigger than a int32 can bear`, 1534236469, 0},
 	}
 
 	for _, tc := range cases {

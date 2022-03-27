@@ -2,37 +2,30 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"math/big"
+	"math"
 	"strconv"
 	"strings"
 )
 
 func Reverse(x int) int {
-	limit := new(big.Int).Exp(big.NewInt(2), big.NewInt(31), nil)
-	if x <= int(limit.Int64())*-1 || x >= int(limit.Int64()) {
+	if x <= math.MinInt32 || x >= math.MaxInt32 {
 		return 0
 	}
-	stringNumber := fmt.Sprint(x)
 
-	negativeNumber := false
+	var negativeNumber bool = false
 	if x < 0 {
 		negativeNumber = true
 	}
 
-	size := 0
+	stringNumber := fmt.Sprint(x)
 	if negativeNumber {
-		// Ignore the minus sign
-		size = len(stringNumber) - 1
-	} else {
-		size = len(stringNumber)
+		// Remove the minus sign
+		stringNumber = stringNumber[1:]
 	}
+	size := len(stringNumber)
 
 	chars := []string{}
 	for _, c := range stringNumber {
-		if string(c) == "-" {
-			continue
-		}
 		chars = append(chars, string(c))
 	}
 
@@ -49,12 +42,8 @@ func Reverse(x int) int {
 		algarisms = "-" + algarisms
 	}
 
-	number, err := strconv.Atoi(algarisms)
-	if err != nil {
-		log.Fatalf("string -> int parse Error\n%+v", err)
-	}
-
-	if number <= int(limit.Int64())*-1 || number >= int(limit.Int64()) {
+	number, _ := strconv.Atoi(algarisms)
+	if number <= math.MinInt32 || number >= math.MaxInt32 {
 		return 0
 	}
 
@@ -62,10 +51,5 @@ func Reverse(x int) int {
 }
 
 func main() {
-	fmt.Println(Reverse(123))
-	fmt.Println(Reverse(-123))
-	fmt.Println(Reverse(120))
-	fmt.Println(Reverse(-2147483647))
-	fmt.Println(Reverse(2147483647))
 	fmt.Println(Reverse(1534236469))
 }
